@@ -74,43 +74,43 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel VerticalAlignment="Center">
-                    <Image Source="../Images/Tiles/mosaic2.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic2a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic2b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic2c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic2d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic2.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic2a.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic2b.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic2c.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic2d.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
 
-                    <Image Source="../Images/Tiles/mosaic3.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic3a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic3b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic3c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic3d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic3.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic3a.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic3b.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic3c.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic3d.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
 
-                    <Image Source="../Images/Tiles/mosaic5.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic5a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic5b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic5c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic5d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic5.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic5a.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic5b.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic5c.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic5d.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" VerticalAlignment="Center">
-                    <Image Source="../Images/Tiles/mosaic1.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic1d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic1c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic1b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic1a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic1.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic1d.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic1c.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic1b.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic1a.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
 
-                    <Image Source="../Images/Tiles/mosaic4.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic4a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic4b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic4c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic4d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic4.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic4a.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic4b.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic4c.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic4d.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
 
-                    <Image Source="../Images/Tiles/mosaic6.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic6a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic6b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic6c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                    <Image Source="../Images/Tiles/mosaic6d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic6.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic6a.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic6b.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic6c.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                    <Image Source="../Images/Tiles/mosaic6d.png" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
                 </StackPanel>
             </Grid>
         </Border>
