@@ -1075,7 +1075,6 @@
 <Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="32" Grid.Row="18" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
 <Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="34" Grid.Row="18" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
 <Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="36" Grid.Row="18" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
-<Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="37" Grid.Row="17" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
 <Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="38" Grid.Row="18" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
 <Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="40" Grid.Row="18" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />
 <Image Source="pack://application:,,,/MosaicBoard;component/Images/Tiles/mosaic2d.png" Width="30" Height="30" Grid.Column="42" Grid.Row="18" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" />

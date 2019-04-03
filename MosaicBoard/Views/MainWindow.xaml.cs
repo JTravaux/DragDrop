@@ -25,7 +25,7 @@ namespace MosaicBoard
             DataContext = vm;
 
             // Add event handlers for drag and drop
-            MainGrid = vm.Mosaic;
+            UpdateGrid();
             MainGrid.Drop += Grid_Drop;
             MainGrid.PreviewMouseRightButtonDown += Mosaic_PreviewMouseRightButtonDown;
             canvas.Content = MainGrid;
