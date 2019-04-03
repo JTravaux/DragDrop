@@ -36,11 +36,10 @@ namespace MosaicBoard.ViewModels
             Mosaic.Children.Clear();
             Random rng = new Random();
             string[] tiles = Directory.GetFiles("../../Images/Tiles");
-            List<string> strs = new List<string>();
+            List<string> strs = new List<string>(tiles);
 
             // Make the full squares 2x more likely (looks a bit nicer)
-            for(int i = 0; i < tiles.Length; ++i) {
-                strs.Add(tiles[i]);
+            for(int i = 0; i < tiles.Length; ++i) 
                 if  (  tiles[i].EndsWith("1.png") 
                     || tiles[i].EndsWith("2.png") 
                     || tiles[i].EndsWith("3.png") 
@@ -50,7 +49,6 @@ namespace MosaicBoard.ViewModels
                     strs.Add(tiles[i]);
                     strs.Add(tiles[i]);
                 }
-            }
 
             for (int i = 0; i < 50; ++i)
                 for(int j = 0; j < 50; ++j) {
