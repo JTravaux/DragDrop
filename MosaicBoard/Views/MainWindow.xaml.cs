@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace MosaicBoard
@@ -11,16 +12,23 @@ namespace MosaicBoard
     public partial class MainWindow : Window
     {
         Image piece;
+        static ViewModelMain vm;
+        public static Grid MainGrid { get; set; }
 
         public MainWindow() {
             InitializeComponent();
-            DataContext = new ViewModelMain();
+            vm = new ViewModelMain();
+            DataContext = vm;
 
-            mosaic.ShowGridLines = true;
-            for (int i = 0; i < 50; ++i) {
-                mosaic.ColumnDefinitions.Add(new ColumnDefinition() {Width = new GridLength(30)});
-                mosaic.RowDefinitions.Add(new RowDefinition() {Height = new GridLength(30)});
-            }
+            // Add event handlers for drag and drop
+            MainGrid = vm.MainGrid;
+            MainGrid.Drop += Grid_Drop;
+            MainGrid.PreviewMouseRightButtonDown += Mosaic_PreviewMouseRightButtonDown;
+            canvas.Content = MainGrid;
+        }
+
+        public static void UpdateGrid() {
+            MainGrid = vm.MainGrid;
         }
 
         private void Grid_Drop(object sender, DragEventArgs e) {
@@ -31,12 +39,12 @@ namespace MosaicBoard
                 Height = 30
             };
 
-            // Find the row and column
-            Point point = e.GetPosition(mosaic);
+            // Set the grid row and column that user selected
+            Point point = e.GetPosition(MainGrid);
             KeyValuePair<int, int> pos = GetGridSpot(point);
             Grid.SetRow(newPiece, pos.Key);
             Grid.SetColumn(newPiece, pos.Value);
-            mosaic.Children.Add(newPiece);
+            MainGrid.Children.Add(newPiece);
 
             piece.Opacity = 1;
         }
@@ -48,9 +56,9 @@ namespace MosaicBoard
         }
 
         private void Mosaic_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e) {
-            var hitTest = VisualTreeHelper.HitTest(mosaic, e.GetPosition(mosaic));
+            var hitTest = VisualTreeHelper.HitTest(MainGrid, e.GetPosition(MainGrid));
             if(hitTest.VisualHit.GetType() == typeof(Image))
-                mosaic.Children.Remove(hitTest.VisualHit as Image);
+                MainGrid.Children.Remove(hitTest.VisualHit as Image);
         }
 
         private KeyValuePair<int, int> GetGridSpot(Point p)
@@ -59,7 +67,7 @@ namespace MosaicBoard
             double accumulatedHeight = 0.0, accumulatedWidth = 0.0;
 
             // calculate the row the mouse was over
-            foreach (RowDefinition rowDefinition in mosaic.RowDefinitions) {
+            foreach (RowDefinition rowDefinition in MainGrid.RowDefinitions) {
                 accumulatedHeight += rowDefinition.ActualHeight;
                 if (accumulatedHeight >= p.Y)
                     break;
@@ -67,7 +75,7 @@ namespace MosaicBoard
             }
 
             // calculate the column the mouse was over
-            foreach (ColumnDefinition columnDefinition in mosaic.ColumnDefinitions) {
+            foreach (ColumnDefinition columnDefinition in MainGrid.ColumnDefinitions) {
                 accumulatedWidth += columnDefinition.ActualWidth;
                 if (accumulatedWidth >= p.X)
                     break;

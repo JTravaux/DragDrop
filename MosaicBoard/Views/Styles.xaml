@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MosaicBoard.Views">
+
+    <Image x:Key="OpenImage" Source="../Images/fileOpen.png" />
+    <Image x:Key="SaveImage" Source="../Images/fileSave.png" />
+    <Image x:Key="CloseImage" Source="../Images/close.png" />
+    <Image x:Key="About" Source="../Images/about.png" />
+    <Image x:Key="New" Source="../Images/new.png" />
+    <Image x:Key="Random" Source="../Images/random.png" />
+
+</ResourceDictionary>

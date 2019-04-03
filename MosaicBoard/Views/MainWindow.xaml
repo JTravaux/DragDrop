@@ -5,17 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MosaicBoard"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="900" SizeToContent="Width">
+        Title="Mosaic - Create Something Beautiful" Height="675" Width="900" SizeToContent="Width" Icon="/MosaicBoard;component/Images/mosaicIcon.png">
+
+    <Window.Resources>
+        <ResourceDictionary Source="./Styles.xaml"/>
+    </Window.Resources>
 
     <DockPanel LastChildFill="True">
 
         <!-- Menu -->
         <Menu DockPanel.Dock="Top">
-            <MenuItem Header="File">
-                <MenuItem Header="Open"/>
-                <MenuItem Header="Save"/>
-                <MenuItem Header="Exit"/>
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open" Command="{Binding OpenCommand}" >
+                    <MenuItem.Icon>
+                        <StaticResource ResourceKey="OpenImage"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Save" Command="{Binding SaveCommand}">
+                    <MenuItem.Icon>
+                        <StaticResource ResourceKey="SaveImage"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="E_xit" Command="{Binding CloseCommand}">
+                    <MenuItem.Icon>
+                        <StaticResource ResourceKey="CloseImage"/>
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
+
+            <!-- Edit -->
+            <MenuItem Header="_Mosaic">
+                <MenuItem Header="_New/Clear" Command="{Binding ClearCommand}">
+                    <MenuItem.Icon>
+                        <StaticResource ResourceKey="New"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="_Random" Command="{Binding RandomCommand}">
+                    <MenuItem.Icon>
+                        <StaticResource ResourceKey="Random"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
+            <!-- Help -->
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" >
+                    <MenuItem.Icon>
+                        <StaticResource ResourceKey="About"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+
         </Menu>
 
         <!-- Tiles/Toolbox -->
@@ -25,23 +66,49 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel>
-                <Image Source="../Images/mosaic2.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                <Image Source="../Images/mosaic3.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                <Image Source="../Images/mosaic4.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                <Image Source="../Images/mosaic5.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
-                <Image Source="../Images/mosaic6.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+            <StackPanel VerticalAlignment="Center">
+                <Image Source="../Images/Tiles/mosaic2.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic2a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic2b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic2c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic2d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+
+                <Image Source="../Images/Tiles/mosaic3.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic3a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic3b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic3c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic3d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+
+                <Image Source="../Images/Tiles/mosaic5.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic5a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic5b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic5c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic5d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
             </StackPanel>
 
-            <StackPanel Grid.Column="1">
-                <Image Source="../Images/mosaic1.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <Image Source="../Images/Tiles/mosaic1.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic1d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic1c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic1b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic1a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+
+                <Image Source="../Images/Tiles/mosaic4.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic4a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic4b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic4c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic4d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+
+                <Image Source="../Images/Tiles/mosaic6.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic6a.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic6b.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic6c.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
+                <Image Source="../Images/Tiles/mosaic6d.png" Width="30" PreviewMouseLeftButtonDown="DragStarting" Margin="5"/>
             </StackPanel>
         </Grid>
 
-        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-            <Grid x:Name="mosaic" AllowDrop="True" Drop="Grid_Drop" Background="LightGray" PreviewMouseRightButtonDown="Mosaic_PreviewMouseRightButtonDown"/>
-        </ScrollViewer>
+        <ScrollViewer x:Name="canvas" Grid.Column="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
 
     </DockPanel>
-    
+
 </Window>
