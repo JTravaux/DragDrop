@@ -32,9 +32,9 @@ namespace MosaicBoard
         }
 
         private void Grid_Drop(object sender, DragEventArgs e) {
-            Image toolboxPiece = piece;
+            Image tile = piece;
             Image newPiece = new Image {
-                Source = toolboxPiece.Source,
+                Source = tile.Source,
                 Width = 30,
                 Height = 30
             };

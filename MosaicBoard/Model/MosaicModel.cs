@@ -13,12 +13,7 @@ namespace MosaicBoard.Model
     {
         public Grid MainGrid { get; set; }
         public MosaicModel() {
-            MainGrid = new Grid {
-                ShowGridLines = true,
-                Background = Brushes.LightGray,
-                AllowDrop = true
-            };
-
+            MainGrid = new Grid { ShowGridLines = true, Background = Brushes.LightGray, AllowDrop = true };
             for (int i = 0; i < 50; ++i) {
                 MainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(30) });
                 MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
