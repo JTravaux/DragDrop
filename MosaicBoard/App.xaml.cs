@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿// Author:  Jordan Travaux
+// Date:    April 1, 2019
+// File:    App.xaml.cs
+// Purpose: The main startup of the mosaic board
+
 using System.Windows;
 
-namespace MosaicBoard
-{
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
+namespace MosaicBoard {
+    public partial class App : Application {
+        protected override void OnStartup(StartupEventArgs e) => new MainWindow().Show();
     }
 }

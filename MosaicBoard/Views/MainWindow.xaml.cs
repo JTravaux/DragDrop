@@ -1,10 +1,13 @@
-﻿using MosaicBoard.ViewModels;
-using System;
+﻿// Author:  Jordan Travaux
+// Date:    April 1, 2019
+// File:    MainWindow.xaml.cs
+// Purpose: The view of the mosaic board
+
+using MosaicBoard.ViewModels;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Markup;
 using System.Windows.Media;
 
 namespace MosaicBoard
@@ -14,6 +17,7 @@ namespace MosaicBoard
         Image piece;
         static ViewModelMain vm;
         public static Grid MainGrid { get; set; }
+        public static void UpdateGrid() => MainGrid = vm.Mosaic;
 
         public MainWindow() {
             InitializeComponent();
@@ -21,14 +25,10 @@ namespace MosaicBoard
             DataContext = vm;
 
             // Add event handlers for drag and drop
-            MainGrid = vm.MainGrid;
+            MainGrid = vm.Mosaic;
             MainGrid.Drop += Grid_Drop;
             MainGrid.PreviewMouseRightButtonDown += Mosaic_PreviewMouseRightButtonDown;
             canvas.Content = MainGrid;
-        }
-
-        public static void UpdateGrid() {
-            MainGrid = vm.MainGrid;
         }
 
         private void Grid_Drop(object sender, DragEventArgs e) {
@@ -61,8 +61,8 @@ namespace MosaicBoard
                 MainGrid.Children.Remove(hitTest.VisualHit as Image);
         }
 
-        private KeyValuePair<int, int> GetGridSpot(Point p)
-        {
+        // Purpose: Detirmine what cell the drop was in based on the mouse position
+        private KeyValuePair<int, int> GetGridSpot(Point p) {
             int row = 0, col = 0;
             double accumulatedHeight = 0.0, accumulatedWidth = 0.0;
 

@@ -1,11 +1,14 @@
-﻿using Microsoft.Win32;
+﻿// Author:  Jordan Travaux
+// Date:    April 1, 2019
+// File:    ViewModelMain.cs
+// Purpose: The ViewModel of the mosaic board
+
+using Microsoft.Win32;
 using MosaicBoard.Helpers;
+using MosaicBoard.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Markup;
@@ -16,63 +19,64 @@ namespace MosaicBoard.ViewModels
 {
     public class ViewModelMain : DependencyObject
     {
-        public Grid MainGrid { get; set; }
+        public Grid Mosaic { get; set; }
 
         public ViewModelMain() {
-            MainGrid = new Grid
-            {
-                ShowGridLines = true,
-                Background = Brushes.LightGray,
-                AllowDrop = true
-            };
-
-            for (int i = 0; i < 50; ++i) {
-                MainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(30) });
-                MainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
-            }
+            MosaicModel m = new MosaicModel();
+            Mosaic = m.MainGrid;
         }
 
         public RelayCommand OpenCommand => new RelayCommand(OpenMosaic);
         public RelayCommand SaveCommand => new RelayCommand(SaveMosaic);
-        public RelayCommand CloseCommand => new RelayCommand(()=>Environment.Exit(0));
         public RelayCommand RandomCommand => new RelayCommand(RandomMosaic);
         public RelayCommand ClearCommand => new RelayCommand(ClearMosaic);
+        public RelayCommand CloseCommand => new RelayCommand(() => Environment.Exit(0));
+        public RelayCommand AboutCommand => new RelayCommand(() => MessageBox.Show("Developed by: Jordan Travaux\n" + "\nInstructions...\nDrag a tile from the toolbox onto the grid.\nTo remove a tile, right click on it.", "About Mosaic Board", MessageBoxButton.OK, MessageBoxImage.Information));
+        public RelayCommand GridLineCommand => new RelayCommand(() => { Mosaic.ShowGridLines = !Mosaic.ShowGridLines; MainWindow.UpdateGrid(); });
 
         private void RandomMosaic() {
+            Mosaic.Children.Clear();
             Random rng = new Random();
-            var tiles = Directory.GetFiles("../../Images/Tiles");
-            MainGrid.Children.Clear();
+            string[] tiles = Directory.GetFiles("../../Images/Tiles");
+            List<string> strs = new List<string>();
+
+            // Make the full squares more likely (looks a bit nicer)
+            for(int i = 0; i < tiles.Length; ++i) {
+                strs.Add(tiles[i]);
+                if (tiles[i].EndsWith("1.png") || tiles[i].EndsWith("2.png") || tiles[i].EndsWith("3.png") || tiles[i].EndsWith("4.png") || tiles[i].EndsWith("5.png") || tiles[i].EndsWith("6.png")) {
+                    strs.Add(tiles[i]);
+                    strs.Add(tiles[i]);
+                }
+            }
 
             for (int i = 0; i < 50; ++i)
-                for(int j = 0; j < 50; ++j)
-                {
-                    Image rngImage = new Image
-                    {
-                        Source = new BitmapImage(new Uri(tiles[rng.Next(0, tiles.Length - 1)], UriKind.Relative)),
+                for(int j = 0; j < 50; ++j) {
+                    Image rngImage = new Image {
+                        Source = new BitmapImage(new Uri(strs[rng.Next(0, strs.Count-1)], UriKind.Relative)),
                         Width = 30,
                         Height = 30
                     };
                     Grid.SetRow(rngImage, i);
                     Grid.SetColumn(rngImage, j);
-                    MainGrid.Children.Add(rngImage);
+                    Mosaic.Children.Add(rngImage);
                 }
             MainWindow.UpdateGrid();
         }
 
         private void ClearMosaic() {
-            MainGrid.Children.Clear();
+            Mosaic.Children.Clear();
             MainWindow.UpdateGrid();
         }
 
         private void OpenMosaic() {
             OpenFileDialog openFileDialog = new OpenFileDialog { Filter = "Mosaic Files (*.mos)|*.mos", InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName };
-            MainGrid.Children.Clear();
+            Mosaic.Children.Clear();
 
             // Browse for a .mos mosaic file 
             if (openFileDialog.ShowDialog() == true) {
                 string[] tiles = File.ReadAllLines(openFileDialog.FileName);
                 foreach (string s in tiles)
-                    MainGrid.Children.Add(XamlReader.Parse(s) as Image);
+                    Mosaic.Children.Add(XamlReader.Parse(s) as Image);
                 MainWindow.UpdateGrid();
             }
             else
@@ -83,10 +87,10 @@ namespace MosaicBoard.ViewModels
             SaveFileDialog saveFile = new SaveFileDialog { Filter = "Mosaic Files (*.mos)|*.mos", InitialDirectory = Directory.GetParent(Directory.GetCurrentDirectory()).FullName };
 
             if(saveFile.ShowDialog() == true) {
-                MainGrid = MainWindow.MainGrid;
+                Mosaic = MainWindow.MainGrid;
 
                 using (TextWriter tw = new StreamWriter(saveFile.FileName)) {
-                    foreach (UIElement tile in MainGrid.Children)
+                    foreach (UIElement tile in Mosaic.Children)
                     if (tile.GetType() == typeof(Image))
                         tw.WriteLine(XamlWriter.Save(tile));
                 }

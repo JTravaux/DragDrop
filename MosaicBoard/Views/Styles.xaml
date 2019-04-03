@@ -8,5 +8,6 @@
     <Image x:Key="About" Source="../Images/about.png" />
     <Image x:Key="New" Source="../Images/new.png" />
     <Image x:Key="Random" Source="../Images/random.png" />
-
+    <Image x:Key="Grid" Source="../Images/gridLines.png" />
+    
 </ResourceDictionary>
