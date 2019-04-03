@@ -27,7 +27,7 @@ namespace MosaicBoard
             // Add event handlers for drag and drop
             UpdateGrid();
             MainGrid.Drop += Grid_Drop;
-            MainGrid.PreviewMouseRightButtonDown += Mosaic_PreviewMouseRightButtonDown;
+            MainGrid.PreviewMouseRightButtonDown += vm.RemoveTile;
             canvas.Content = MainGrid;
         }
 
@@ -55,13 +55,7 @@ namespace MosaicBoard
             DragDrop.DoDragDrop(sender as DependencyObject, piece, DragDropEffects.Copy);
         }
 
-        private void Mosaic_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e) {
-            var hitTest = VisualTreeHelper.HitTest(MainGrid, e.GetPosition(MainGrid));
-            if(hitTest.VisualHit.GetType() == typeof(Image))
-                MainGrid.Children.Remove(hitTest.VisualHit as Image);
-        }
-
-        // Purpose: Detirmine what cell the drop was in based on the mouse position
+        // Purpose: Used for Drag&Drop to detirmine what cell the drop was in based on the mouse position
         private KeyValuePair<int, int> GetGridSpot(Point p) {
             int row = 0, col = 0;
             double accumulatedHeight = 0.0, accumulatedWidth = 0.0;

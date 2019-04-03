@@ -11,13 +11,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Markup;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace MosaicBoard.ViewModels
 {
-    public class ViewModelMain : DependencyObject
+    public class ViewModelMain
     {
         public Grid Mosaic { get; set; }
 
@@ -94,6 +95,11 @@ namespace MosaicBoard.ViewModels
                 }
                 MessageBox.Show("Mosaic successfully saved.", "Successful Save", MessageBoxButton.OK, MessageBoxImage.Information);
             }
+        }
+
+        public void RemoveTile(object sender, MouseButtonEventArgs e) {
+            Mosaic.Children.Remove(VisualTreeHelper.HitTest(Mosaic, e.GetPosition(Mosaic)).VisualHit as Image);
+            MainWindow.UpdateGrid();
         }
 
     }
