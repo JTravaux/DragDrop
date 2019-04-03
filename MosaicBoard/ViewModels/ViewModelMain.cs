@@ -21,18 +21,16 @@ namespace MosaicBoard.ViewModels
     {
         public Grid Mosaic { get; set; }
 
-        public ViewModelMain() {
-            MosaicModel m = new MosaicModel();
-            Mosaic = m.MainGrid;
-        }
-
+        // Menu Commands
         public RelayCommand OpenCommand => new RelayCommand(OpenMosaic);
         public RelayCommand SaveCommand => new RelayCommand(SaveMosaic);
         public RelayCommand RandomCommand => new RelayCommand(RandomMosaic);
         public RelayCommand ClearCommand => new RelayCommand(ClearMosaic);
         public RelayCommand CloseCommand => new RelayCommand(() => Environment.Exit(0));
-        public RelayCommand AboutCommand => new RelayCommand(() => MessageBox.Show("Developed by: Jordan Travaux\n" + "\nInstructions...\nDrag a tile from the toolbox onto the grid.\nTo remove a tile, right click on it.", "About Mosaic Board", MessageBoxButton.OK, MessageBoxImage.Information));
+        public RelayCommand AboutCommand => new RelayCommand(() => MessageBox.Show("Developed By: Jordan Travaux\nDeveloped For: INFO5102 Project 3\n\n===Usage===\nDrag a shape from the toolbox onto the grid to place a tile.\nTo remove a tile, simply right click on it.", "About Mosaic Board", MessageBoxButton.OK, MessageBoxImage.Information));
         public RelayCommand GridLineCommand => new RelayCommand(() => { Mosaic.ShowGridLines = !Mosaic.ShowGridLines; MainWindow.UpdateGrid(); });
+
+        public ViewModelMain() => Mosaic = new MosaicModel().MainGrid;
 
         private void RandomMosaic() {
             Mosaic.Children.Clear();
@@ -40,10 +38,15 @@ namespace MosaicBoard.ViewModels
             string[] tiles = Directory.GetFiles("../../Images/Tiles");
             List<string> strs = new List<string>();
 
-            // Make the full squares more likely (looks a bit nicer)
+            // Make the full squares 2x more likely (looks a bit nicer)
             for(int i = 0; i < tiles.Length; ++i) {
                 strs.Add(tiles[i]);
-                if (tiles[i].EndsWith("1.png") || tiles[i].EndsWith("2.png") || tiles[i].EndsWith("3.png") || tiles[i].EndsWith("4.png") || tiles[i].EndsWith("5.png") || tiles[i].EndsWith("6.png")) {
+                if  (  tiles[i].EndsWith("1.png") 
+                    || tiles[i].EndsWith("2.png") 
+                    || tiles[i].EndsWith("3.png") 
+                    || tiles[i].EndsWith("4.png") 
+                    || tiles[i].EndsWith("5.png") 
+                    || tiles[i].EndsWith("6.png")) {
                     strs.Add(tiles[i]);
                     strs.Add(tiles[i]);
                 }
@@ -79,8 +82,6 @@ namespace MosaicBoard.ViewModels
                     Mosaic.Children.Add(XamlReader.Parse(s) as Image);
                 MainWindow.UpdateGrid();
             }
-            else
-                return;
         }
 
         private void SaveMosaic() {
@@ -88,13 +89,11 @@ namespace MosaicBoard.ViewModels
 
             if(saveFile.ShowDialog() == true) {
                 Mosaic = MainWindow.MainGrid;
-
                 using (TextWriter tw = new StreamWriter(saveFile.FileName)) {
                     foreach (UIElement tile in Mosaic.Children)
                     if (tile.GetType() == typeof(Image))
                         tw.WriteLine(XamlWriter.Save(tile));
                 }
-
                 MessageBox.Show("Mosaic successfully saved.", "Successful Save", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
